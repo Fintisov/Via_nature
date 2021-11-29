@@ -1,0 +1,106 @@
+.container {
+  @media screen and (min-width: 1200px) {
+    max-width: 1134px;
+  }
+}
+
+.check-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  cursor: pointer;
+
+  .check-item__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    padding: 8px 0;
+    border: 1px solid #E5E5E5;
+    border-radius: 16px;
+    color: black;
+    box-shadow: none;
+    transition-property: color, box-shadow;
+    transition-duration: 150ms;
+
+    .title {
+      @include fonts($gilroy, 600, 20px, 1.2);
+    }
+    .text {
+      @include fonts($gilroy, 500, 16px, 1.2)
+    }
+  }
+
+  .check-item__hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+
+    &:checked + .check-item__content {
+      color: white;
+      padding: 9px;
+      border: none;
+      background: $greenGradient;
+      box-shadow: 2px 2px 5px 0 #00000026;
+      transition-property: color, box-shadow;
+      transition-duration: 150ms;
+    }
+  }
+
+  &.sticker {
+    &:before {
+      content: "best offer";
+      width: 42px;
+      height: 28px;
+      background: $yellow;
+      @include fonts($gilroy, 600, 14px, 0.85);
+      border-radius: 60px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: translate(50%, -50%) rotate(6.2deg);
+
+      @include max-screen(450px) {
+        right: 14px;
+      }
+    }
+  }
+}
+
+.btn {
+  padding: 10px 20px;
+  max-width: 266px;
+  width: 100%;
+  height: 55px;
+  color: white;
+  border-radius: 60px;
+  border: none;
+  @include fonts($gilroy, 700, 22px, 1.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include max-screen(414px) {
+    max-width: 200px;
+  }
+
+  &:active:focus, &:focus  {
+    box-shadow: none;
+  }
+
+  &.btn-success {
+    background: $greenGradient;
+
+    &:hover {
+      background: rgb(88,200,173);
+      background: linear-gradient(180deg, rgba(88,200,173,1) 0%, rgba(88,200,173,1) 100%);
+    }
+  }
+}
